@@ -4,14 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel El Centauro - La Casa del General</title>
+    <title>La Casa del General | Boutique Hotel</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -19,23 +15,15 @@
             theme: {
                 extend: {
                     colors: {
-                        villa: {
-                            50: '#FDFBF7', // Papel pergamino claro
-                            100: '#F5F0E5', // Arena suave
-                            200: '#E8DCC4', // Cuero crudo
-                            500: '#C29B40', // Oro Revolución (Bronce)
-                            600: '#A67C2E', // Madera de mezquite
-                            900: '#4A3728', // Sombra de montura
-                        },
+                        apple: {
+                            blue: '#007AFF',
+                            gray: '#8E8E93',
+                            bg: '#F5F5F7',
+                            card: 'rgba(255, 255, 255, 0.72)'
+                        }
                     },
                     fontFamily: {
-                        serif: ['Lora', 'serif'],
-                        display: ['Cinzel', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'liquid': '0 8px 32px 0 rgba(194, 155, 64, 0.15)',
-                        'inner-glass': 'inset 0 0 15px rgba(255, 255, 255, 0.5)',
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'sans-serif'],
                     }
                 }
             }
@@ -43,223 +31,174 @@
     </script>
 
     <style>
-        /* Efecto Liquid Glass (Cristal Líquido Claro) */
+        /* iOS Liquid Glass Effect */
         .liquid-glass {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(12px) saturate(180%);
-            -webkit-backdrop-filter: blur(12px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: saturate(180%) blur(25px);
+            -webkit-backdrop-filter: saturate(180%) blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
 
-        .liquid-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        .apple-button {
+            background: #007AFF;
+            color: white;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .liquid-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px rgba(166, 124, 46, 0.15);
+        .apple-button:hover {
+            background: #0062CC;
+            transform: scale(1.02);
         }
 
-        /* Texturas Revolucionarias */
-        .sepia-overlay {
-            filter: sepia(0.3) contrast(1.1);
+        .apple-button:active {
+            transform: scale(0.96);
         }
 
-        .vintage-border {
-            border: 2px solid;
-            border-image: linear-gradient(to bottom, #C29B40, #E8DCC4) 1;
+        .ios-card {
+            background: white;
+            border-radius: 24px;
+            transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
         }
 
-        /* Animación suave para la entrada */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .ios-card:hover {
+            transform: scale(1.01);
         }
-        .reveal { animation: fadeIn 1s ease-out forwards; }
+
+        /* Hero Text Gradient (Like Apple's site) */
+        .apple-text-gradient {
+            background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body {
+            background-color: #F5F5F7;
+        }
     </style>
 </head>
 
-<body class="bg-villa-50 text-villa-900 font-sans selection:bg-villa-500 selection:text-white">
+<body class="antialiased text-[#1d1d1f]">
 
-    <header class="fixed w-full top-0 z-50 px-4 py-4 transition-all">
-        <nav class="max-w-6xl mx-auto liquid-glass rounded-full px-8 py-3 flex justify-between items-center border border-white/80">
-            <a href="#" class="flex flex-col">
-                <span class="font-display text-xl font-bold tracking-tighter text-villa-600">EL CENTAURO</span>
-                <span class="text-[0.6rem] tracking-[0.4em] uppercase opacity-70">La Casa del General</span>
+    <header class="fixed w-full top-0 z-50 px-6 py-4">
+        <nav class="max-w-5xl mx-auto liquid-glass rounded-[22px] px-8 py-3 flex justify-between items-center">
+            <a href="#" class="font-semibold text-lg tracking-tight">
+                La Casa del General
             </a>
             
-            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#inicio" class="hover:text-villa-500 transition-colors">Historia</a>
-                <a href="#habitaciones" class="hover:text-villa-500 transition-colors">Cuarteles</a>
-                <a href="#contacto" class="hover:text-villa-500 transition-colors">Cantina</a>
-                <a href="#contacto" class="bg-villa-600 text-white px-6 py-2.5 rounded-full hover:bg-villa-900 transition-all shadow-lg">
-                    Reservar
-                </a>
+            <div class="hidden md:flex items-center gap-8 text-[13px] font-medium opacity-80">
+                <a href="#inicio" class="hover:opacity-100 transition-opacity">Inicio</a>
+                <a href="#habitaciones" class="hover:opacity-100 transition-opacity">Habitaciones</a>
+                <a href="#contacto" class="hover:opacity-100 transition-opacity">Contacto</a>
+                <a href="#" class="apple-button px-5 py-2 rounded-full text-xs font-bold">Reservar</a>
             </div>
         </nav>
     </header>
 
-    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="IMG/Fondo.png" class="w-full h-full object-cover sepia-overlay opacity-40" alt="Fondo Revolucionario">
-            <div class="absolute inset-0 bg-gradient-to-b from-villa-50/20 via-transparent to-villa-50"></div>
-        </div>
-
-        <div class="relative z-10 text-center px-6 reveal">
-            <div class="inline-block mb-4 px-6 py-1 border-y border-villa-500 text-villa-600 tracking-[0.5em] text-xs font-bold uppercase">
-                Desde 1910
-            </div>
-            <h1 class="font-display text-6xl md:text-9xl mb-4 text-villa-900">Villa <span class="italic font-serif text-villa-600">Vive</span></h1>
-            <p class="font-serif text-xl md:text-2xl italic max-w-2xl mx-auto text-villa-900/80 mb-12">
-                "Prefiero morir de pie que vivir siempre arrodillado."
+    <section id="inicio" class="pt-32 pb-20 px-6 text-center bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold apple-text-gradient tracking-tight mb-6">
+                Experiencia Inolvidable.
+            </h1>
+            <p class="text-xl md:text-2xl text-apple-gray font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
+                El espíritu de Pancho Villa en un entorno diseñado para el confort absoluto.
             </p>
             
-            <div class="max-w-4xl mx-auto liquid-glass p-2 rounded-2xl md:rounded-full shadow-liquid">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-2">
-                    <div class="flex flex-col text-left">
-                        <label class="text-[10px] uppercase font-bold text-villa-600 ml-1">Llegada</label>
-                        <input type="date" class="bg-transparent border-none focus:ring-0 text-sm font-semibold">
+            <div class="max-w-3xl mx-auto liquid-glass p-3 rounded-[28px] shadow-xl border border-white">
+                <div class="flex flex-col md:flex-row items-center gap-2">
+                    <div class="flex-1 w-full bg-white/50 rounded-2xl p-4 text-left">
+                        <span class="block text-[10px] font-bold text-apple-blue uppercase mb-1">Entrada</span>
+                        <input type="text" placeholder="Seleccionar fecha" class="bg-transparent border-none w-full p-0 text-sm font-semibold focus:ring-0">
                     </div>
-                    <div class="h-8 w-px bg-villa-200 hidden md:block"></div>
-                    <div class="flex flex-col text-left">
-                        <label class="text-[10px] uppercase font-bold text-villa-600 ml-1">Huéspedes</label>
-                        <select class="bg-transparent border-none focus:ring-0 text-sm font-semibold">
-                            <option>2 Revolucionarios</option>
-                            <option>1 General</option>
+                    <div class="flex-1 w-full bg-white/50 rounded-2xl p-4 text-left">
+                        <span class="block text-[10px] font-bold text-apple-blue uppercase mb-1">Huéspedes</span>
+                        <select class="bg-transparent border-none w-full p-0 text-sm font-semibold focus:ring-0 appearance-none">
+                            <option>2 Personas</option>
+                            <option>1 Persona</option>
                         </select>
                     </div>
-                    <button class="w-full md:w-auto bg-villa-900 text-white px-10 py-4 rounded-xl md:rounded-full font-bold uppercase text-xs tracking-widest hover:bg-villa-600 transition-colors">
-                        Reclutar Estancia
+                    <button class="apple-button w-full md:w-auto h-full px-8 py-5 rounded-2xl font-bold text-sm">
+                        Buscar
                     </button>
                 </div>
             </div>
         </div>
+
+        <div class="mt-20 max-w-6xl mx-auto rounded-[32px] overflow-hidden shadow-2xl">
+            <img src="IMG/Fondo.png" class="w-full h-[600px] object-cover" alt="Hotel Interior">
+        </div>
     </section>
 
-    <section class="py-24 bg-villa-100/50 relative">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div class="relative group">
-                <div class="absolute -inset-4 border-2 border-villa-200 rounded-[2rem] translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-all"></div>
-                <img src="IMG/4.jpg" class="w-full h-[500px] object-cover rounded-[2rem] shadow-2xl sepia-overlay" alt="Interior Histórico">
-                <div class="absolute bottom-6 right-6 liquid-glass p-6 rounded-2xl">
-                    <p class="font-display text-3xl font-bold text-villa-600 italic">HCP</p>
-                    <p class="text-[10px] uppercase tracking-tighter">Parral, Chihuahua</p>
+    <section id="habitaciones" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="mb-12">
+            <h2 class="text-4xl font-bold tracking-tight">Habitaciones.</h2>
+            <p class="text-xl text-apple-gray mt-2">Tecnología y tradición en cada detalle.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="ios-card group overflow-hidden">
+                <div class="relative h-[450px]">
+                    <img src="IMG/HABITACIONES/2.jpg" class="w-full h-full object-cover" alt="Deluxe Room">
+                    <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/50 to-transparent">
+                        <span class="text-white/80 text-xs font-bold uppercase tracking-widest">General Suite</span>
+                        <h3 class="text-white text-3xl font-bold mt-1">Confort Imperial</h3>
+                    </div>
+                </div>
+                <div class="p-8 flex justify-between items-center bg-white">
+                    <p class="text-apple-gray text-sm leading-relaxed max-w-[200px]">Camas King size con sábanas de 600 hilos.</p>
+                    <a href="#" class="apple-button px-6 py-2.5 rounded-full text-xs font-bold">Ver más</a>
                 </div>
             </div>
-            
-            <div class="space-y-8">
-                <h2 class="font-display text-4xl text-villa-900">La Guarida del <span class="text-villa-500">Centauro del Norte</span></h2>
-                <p class="font-serif text-lg leading-relaxed text-villa-900/70">
-                    Hospédate en una casona que respira la valentía de 1910. Hemos restaurado cada rincón para ofrecerte el lujo que un General merece, manteniendo la esencia rústica del norte de México.
-                </p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="liquid-card p-6 rounded-2xl">
-                        <i class="fas fa-horse text-villa-500 text-2xl mb-4"></i>
-                        <h4 class="font-bold text-sm uppercase">Caballerizas</h4>
-                        <p class="text-xs opacity-60">Tours históricos a caballo por Parral.</p>
+
+            <div class="ios-card group overflow-hidden">
+                <div class="relative h-[450px]">
+                    <img src="IMG/HABITACIONES/3.jpg" class="w-full h-full object-cover" alt="Master Suite">
+                    <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/50 to-transparent">
+                        <span class="text-white/80 text-xs font-bold uppercase tracking-widest">Master Suite</span>
+                        <h3 class="text-white text-3xl font-bold mt-1">Esencia 1910</h3>
                     </div>
-                    <div class="liquid-card p-6 rounded-2xl">
-                        <i class="fas fa-wine-glass-alt text-villa-500 text-2xl mb-4"></i>
-                        <h4 class="font-bold text-sm uppercase">Sotol y Tequila</h4>
-                        <p class="text-xs opacity-60">Catas privadas de destilados regionales.</p>
-                    </div>
+                </div>
+                <div class="p-8 flex justify-between items-center bg-white">
+                    <p class="text-apple-gray text-sm leading-relaxed max-w-[200px]">Vistas panorámicas al centro histórico.</p>
+                    <a href="#" class="apple-button px-6 py-2.5 rounded-full text-xs font-bold">Ver más</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="habitaciones" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="font-display text-4xl mb-2">Cuarteles de Campaña</h2>
-            <div class="w-24 h-1 bg-villa-500 mx-auto"></div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-12">
-            <div class="liquid-card rounded-[3rem] overflow-hidden group">
-                <div class="relative h-[400px]">
-                    <img src="IMG/HABITACIONES/2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 sepia-[0.2]" alt="Suite General">
-                    <div class="absolute top-6 left-6 liquid-glass px-4 py-1 rounded-full text-xs font-bold uppercase">
-                        Master Suite
-                    </div>
-                </div>
-                <div class="p-10 flex justify-between items-center">
-                    <div>
-                        <h3 class="font-display text-2xl mb-2">Suite El Centauro</h3>
-                        <p class="text-sm italic font-serif">Balcón hacia la Plaza de Armas</p>
-                    </div>
-                    <div class="text-right">
-                        <span class="block text-2xl font-bold text-villa-600">$2,400</span>
-                        <span class="text-[10px] uppercase tracking-widest">por noche</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="liquid-card rounded-[3rem] overflow-hidden group">
-                <div class="relative h-[400px]">
-                    <img src="IMG/HABITACIONES/3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 sepia-[0.2]" alt="Suite Revolucionaria">
-                    <div class="absolute top-6 left-6 liquid-glass px-4 py-1 rounded-full text-xs font-bold uppercase">
-                        Junior Suite
-                    </div>
-                </div>
-                <div class="p-10 flex justify-between items-center">
-                    <div>
-                        <h3 class="font-display text-2xl mb-2">Cuartel Adelita</h3>
-                        <p class="text-sm italic font-serif">Confort rústico y elegancia</p>
-                    </div>
-                    <div class="text-right">
-                        <span class="block text-2xl font-bold text-villa-600">$1,850</span>
-                        <span class="text-[10px] uppercase tracking-widest">por noche</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contacto" class="bg-villa-900 text-villa-100 py-20 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
-            <div class="space-y-6">
-                <h4 class="font-display text-2xl">EL CENTAURO</h4>
-                <p class="font-serif italic opacity-70">"Parral me gusta hasta para morir."</p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 border border-villa-100/30 rounded-full flex items-center justify-center hover:bg-villa-500 transition-all"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 border border-villa-100/30 rounded-full flex items-center justify-center hover:bg-villa-500 transition-all"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-            
-            <div class="space-y-4">
-                <h5 class="font-bold uppercase text-xs tracking-widest text-villa-500">Ubicación</h5>
-                <p class="text-sm opacity-80 leading-loose">
-                    Calle de la Revolución #1910<br>
-                    Centro Histórico, Hidalgo del Parral<br>
-                    Chihuahua, México.
+    <footer class="bg-white py-20 px-6 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="max-w-xs">
+                <h4 class="font-bold text-lg mb-4">La Casa del General</h4>
+                <p class="text-apple-gray text-sm leading-loose">
+                    Inspirado en la historia de México, diseñado para el mundo moderno. Tu refugio en Hidalgo del Parral.
                 </p>
             </div>
-
-            <div class="space-y-4">
-                <h5 class="font-bold uppercase text-xs tracking-widest text-villa-500">Reservas Directas</h5>
-                <p class="text-2xl font-display underline text-villa-100">627 523 0000</p>
-                <p class="text-sm opacity-60">reservas@hotelelcentauro.com</p>
+            
+            <div class="grid grid-cols-2 gap-16">
+                <div class="flex flex-col gap-3 text-sm font-medium">
+                    <span class="text-xs text-apple-gray mb-2 font-bold uppercase">Explorar</span>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Nosotros</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Habitaciones</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Galería</a>
+                </div>
+                <div class="flex flex-col gap-3 text-sm font-medium">
+                    <span class="text-xs text-apple-gray mb-2 font-bold uppercase">Asistencia</span>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Contacto</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Reservar</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Localización</a>
+                </div>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto mt-20 pt-8 border-t border-villa-100/10 text-center text-[10px] uppercase tracking-[0.3em] opacity-40">
-            &copy; 2026 Hotel El Centauro - La Casa del General.
+        <div class="max-w-6xl mx-auto mt-20 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between text-[12px] text-apple-gray font-medium">
+            <p>Copyright © 2026 La Casa del General Hotel. Todos los derechos reservados.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos de uso</a>
+            </div>
         </div>
     </footer>
 
-    <script>
-        window.onscroll = function() {
-            const header = document.querySelector("header");
-            if (window.pageYOffset > 50) {
-                header.classList.add("py-2");
-            } else {
-                header.classList.remove("py-2");
-            }
-        };
-    </script>
 </body>
 </html>
