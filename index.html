@@ -1,215 +1,460 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Casa del General | Boutique Hotel</title>
-
+    <title>La Casa del General | Boutique Hotel de Lujo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: {
-                            800: '#101E33',
-                            900: '#0A1422', // Azul Marino Apple
-                        },
                         apple: {
                             blue: '#007AFF',
-                            gray: '#86868b',
-                            bg: '#F5F5F7',
+                            gray: '#8E8E93',
+                            lightgray: '#F5F5F7',
+                            darkgray: '#1d1d1f'
                         }
                     },
                     fontFamily: {
-                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', 'sans-serif'],
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
+    
     <style>
-        /* Liquid Glass Pro Effect */
+        /* Liquid Glass Effect Avanzado */
         .liquid-glass {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.72);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+        
+        .liquid-glass-dark {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: saturate(180%) blur(15px);
+            -webkit-backdrop-filter: saturate(180%) blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .dark-glass {
-            background: rgba(16, 30, 51, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .ios-button {
+        /* Apple Style Buttons */
+        .apple-button {
             background: #007AFF;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 14px 0 rgba(0, 122, 255, 0.3);
+            color: white;
+            font-weight: 500;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 980px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .apple-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .apple-button:hover::before {
+            left: 100%;
+        }
+        
+        .apple-button:hover {
+            background: #0066CC;
+            transform: scale(1.02);
+        }
+        
+        .apple-button:active {
+            transform: scale(0.98);
         }
 
-        .ios-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+        /* iOS Cards */
+        .ios-card {
+            background: white;
+            border-radius: 28px;
+            transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+        
+        .ios-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
         }
 
-        .map-container {
-            mask-image: radial-gradient(circle, black 50%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle, black 40%, transparent 100%);
+        /* Apple Text Gradient */
+        .apple-text-gradient {
+            background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-gradient {
-            background: linear-gradient(180deg, rgba(16, 30, 51, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+        /* Hero Section con overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        body {
+            background-color: #F5F5F7;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #007AFF;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0066CC;
         }
     </style>
 </head>
 
-<body class="bg-[#F5F5F7] text-navy-900 font-sans antialiased">
+<body class="antialiased text-apple-darkgray">
 
-    <header class="fixed w-full top-0 z-50 px-6 py-4">
-        <nav class="max-w-6xl mx-auto liquid-glass rounded-[22px] px-8 py-2 flex justify-between items-center shadow-sm">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-navy-900 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-chess-knight text-white text-xs"></i>
-                </div>
-                <span class="font-bold tracking-tight text-sm uppercase">La Casa del General</span>
+    <!-- Header mejorado con liquid glass más pronunciado -->
+    <header class="fixed w-full top-0 z-50 px-4 md:px-6 py-3">
+        <nav class="max-w-7xl mx-auto liquid-glass rounded-full px-6 md:px-8 py-2 flex justify-between items-center">
+            <a href="#" class="font-semibold text-lg tracking-tight flex items-center gap-2">
+                <i class="fa-regular fa-building text-apple-blue text-xl"></i>
+                <span class="bg-gradient-to-r from-apple-darkgray to-apple-gray bg-clip-text text-transparent">La Casa del General</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#inicio" class="relative group">
+                    Inicio
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-apple-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#habitaciones" class="relative group">
+                    Habitaciones
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-apple-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#experiencias" class="relative group">
+                    Experiencias
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-apple-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#contacto" class="relative group">
+                    Contacto
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-apple-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#" class="apple-button px-6 py-2 text-xs font-semibold tracking-wide shadow-lg shadow-apple-blue/20">
+                    <i class="fa-regular fa-calendar mr-2"></i>Reservar Ahora
+                </a>
             </div>
             
-            <div class="hidden md:flex items-center gap-8 text-[12px] font-semibold text-navy-800/80">
-                <a href="#inicio" class="hover:text-apple-blue transition-colors">Inicio</a>
-                <a href="#habitaciones" class="hover:text-apple-blue transition-colors">Habitaciones</a>
-                <a href="#ubicacion" class="hover:text-apple-blue transition-colors">Ubicación</a>
-                <a href="https://www.instagram.com/lacasadelgeneralhotel/" target="_blank" class="text-lg hover:text-pink-600 transition-colors">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <button class="ios-button text-white px-6 py-2 rounded-full text-xs font-bold">Reservar</button>
-            </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 liquid-glass">
+                <i class="fa-solid fa-bars text-apple-darkgray"></i>
+            </button>
         </nav>
     </header>
 
-    <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-        <div class="absolute inset-0 z-0">
-            <img src="IMG/Fondo.png" class="w-full h-full object-cover" alt="Hero">
-            <div class="absolute inset-0 bg-white/40"></div>
+    <!-- Hero Section mejorado con más presencia -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image con overlay -->
+        <div class="absolute inset-0">
+            <img src="IMG/Fondo.png" class="w-full h-full object-cover scale-105 animate-pulse-slow" alt="Hotel Interior">
+            <div class="absolute inset-0 hero-overlay"></div>
         </div>
-
-        <div class="relative z-10 text-center px-6 mt-16">
-            <span class="text-apple-blue font-bold tracking-[0.2em] text-[10px] uppercase mb-4 block">Hidalgo del Parral, MX</span>
-            <h1 class="text-6xl md:text-8xl font-black text-navy-900 tracking-tighter mb-6">
-                EXPERIENCIA<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-navy-800 to-navy-900 opacity-90">INOLVIDABLE</span>
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center text-white pt-20">
+            <div class="inline-block liquid-glass-dark rounded-full px-6 py-2 mb-8 text-sm font-medium tracking-wider">
+                <i class="fa-regular fa-star mr-2"></i>Hotel Boutique de Lujo en Hidalgo del Parral
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-6 leading-[1.1]">
+                <span class="block">Experiencia</span>
+                <span class="block bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent">Inolvidable.</span>
             </h1>
             
-            <div class="max-w-4xl mx-auto dark-glass p-3 rounded-[32px] mt-12 shadow-2xl shadow-navy-900/20">
-                <div class="flex flex-col md:flex-row gap-2">
-                    <div class="flex-1 bg-white/10 rounded-[22px] p-4 text-left border border-white/10">
-                        <p class="text-[9px] font-bold text-apple-blue uppercase mb-1">Entrada</p>
-                        <input type="text" placeholder="¿Cuándo llegas?" class="bg-transparent border-none w-full p-0 text-white text-sm placeholder-white/40 focus:ring-0">
+            <p class="text-xl md:text-2xl text-white/80 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+                El espíritu de Pancho Villa se encuentra con el diseño contemporáneo. <br>Tu refugio de lujo en el corazón de Parral.
+            </p>
+            
+            <!-- Search Bar mejorada con liquid glass -->
+            <div class="max-w-4xl mx-auto liquid-glass-dark rounded-2xl p-2 shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-2">
+                    <div class="flex-1 w-full bg-white/10 rounded-xl p-3 text-left backdrop-blur-sm">
+                        <span class="block text-[10px] font-bold text-white/60 uppercase mb-1 tracking-wider">
+                            <i class="fa-regular fa-calendar mr-1"></i>Entrada
+                        </span>
+                        <input type="text" placeholder="Seleccionar fecha" value="15 Mar 2024" class="bg-transparent border-none w-full p-0 text-sm font-semibold text-white placeholder-white/50 focus:ring-0">
                     </div>
-                    <div class="flex-1 bg-white/10 rounded-[22px] p-4 text-left border border-white/10">
-                        <p class="text-[9px] font-bold text-apple-blue uppercase mb-1">Huéspedes</p>
-                        <select class="bg-transparent border-none w-full p-0 text-white text-sm focus:ring-0 appearance-none">
-                            <option class="text-navy-900">2 Adultos</option>
-                            <option class="text-navy-900">1 Adulto</option>
+                    <div class="flex-1 w-full bg-white/10 rounded-xl p-3 text-left backdrop-blur-sm">
+                        <span class="block text-[10px] font-bold text-white/60 uppercase mb-1 tracking-wider">
+                            <i class="fa-regular fa-calendar mr-1"></i>Salida
+                        </span>
+                        <input type="text" placeholder="Seleccionar fecha" value="18 Mar 2024" class="bg-transparent border-none w-full p-0 text-sm font-semibold text-white placeholder-white/50 focus:ring-0">
+                    </div>
+                    <div class="flex-1 w-full bg-white/10 rounded-xl p-3 text-left backdrop-blur-sm">
+                        <span class="block text-[10px] font-bold text-white/60 uppercase mb-1 tracking-wider">
+                            <i class="fa-regular fa-user mr-1"></i>Huéspedes
+                        </span>
+                        <select class="bg-transparent border-none w-full p-0 text-sm font-semibold text-white focus:ring-0 appearance-none">
+                            <option value="2" class="text-apple-darkgray" selected>2 Adultos</option>
+                            <option value="1" class="text-apple-darkgray">1 Adulto</option>
+                            <option value="3" class="text-apple-darkgray">3 Adultos</option>
+                            <option value="4" class="text-apple-darkgray">4 Adultos</option>
                         </select>
                     </div>
-                    <button class="ios-button text-white px-10 py-4 rounded-[22px] font-bold text-sm">
-                        Ver Disponibilidad
+                    <button class="apple-button w-full md:w-auto px-8 py-4 text-sm font-bold tracking-wide">
+                        <i class="fa-regular fa-magnifying-glass mr-2"></i>Buscar Disponibilidad
                     </button>
                 </div>
             </div>
+            
+            <!-- Stats -->
+            <div class="flex justify-center gap-12 mt-16">
+                <div class="text-center">
+                    <div class="text-3xl font-bold">200+</div>
+                    <div class="text-sm text-white/60">Estancias Felices</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">4.9</div>
+                    <div class="text-sm text-white/60">Calificación</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">12</div>
+                    <div class="text-sm text-white/60">Suites de Lujo</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center">
+                <div class="w-1 h-2 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
         </div>
     </section>
 
-    <section id="habitaciones" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="flex justify-between items-end mb-16">
-            <div>
-                <h2 class="text-4xl font-black text-navy-900 tracking-tight">HABITACIONES.</h2>
-                <p class="text-apple-gray font-medium mt-2">Inspiración 1910, confort 2026.</p>
-            </div>
+    <!-- Habitaciones Section mejorado -->
+    <section id="habitaciones" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-apple-blue text-sm font-bold tracking-widest uppercase bg-apple-blue/10 px-4 py-2 rounded-full inline-block mb-4">
+                <i class="fa-regular fa-bed mr-2"></i>Nuestras Habitaciones
+            </span>
+            <h2 class="text-5xl font-bold tracking-tight mb-4">Lujo y Confort Histórico</h2>
+            <p class="text-xl text-apple-gray max-w-2xl mx-auto">Cada espacio ha sido diseñado para brindarte una experiencia única, fusionando la historia con la modernidad.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <div class="group relative rounded-[32px] overflow-hidden bg-white shadow-xl shadow-gray-200/50 transition-transform hover:scale-[1.01]">
-                <img src="IMG/HABITACIONES/2.jpg" class="w-full h-[500px] object-cover" alt="Suite">
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-0 left-0 p-10">
-                    <span class="bg-apple-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Top Choice</span>
-                    <h3 class="text-white text-3xl font-bold mt-4">Suite del General</h3>
-                </div>
-            </div>
-
-            <div class="group relative rounded-[32px] overflow-hidden bg-white shadow-xl shadow-gray-200/50 transition-transform hover:scale-[1.01]">
-                <img src="IMG/HABITACIONES/3.jpg" class="w-full h-[500px] object-cover" alt="Suite">
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-0 left-0 p-10">
-                    <span class="bg-white text-navy-900 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Premium</span>
-                    <h3 class="text-white text-3xl font-bold mt-4">Cuartel Centauro</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="ubicacion" class="py-24 bg-navy-900 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="relative">
-                <div class="absolute -top-20 -left-20 w-64 h-64 bg-apple-blue/20 blur-[100px]"></div>
-                <h2 class="text-white text-5xl font-black tracking-tight mb-8">EN EL CORAZÓN DE LA HISTORIA.</h2>
-                <p class="text-white/60 text-lg leading-relaxed mb-10">Estamos ubicados a pasos de los sitios más emblemáticos de Hidalgo del Parral. Ven y vive la ruta de Villa.</p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4 text-white">
-                        <div class="w-12 h-12 dark-glass rounded-2xl flex items-center justify-center text-apple-blue">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <p class="font-medium">Centro Histórico, Parral, Chihuahua.</p>
+            <!-- Habitación 1 -->
+            <div class="ios-card group">
+                <div class="relative h-[500px] overflow-hidden">
+                    <img src="IMG/HABITACIONES/2.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="General Suite">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    
+                    <!-- Badges -->
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="liquid-glass-dark text-white text-xs px-3 py-1 rounded-full">
+                            <i class="fa-regular fa-crown mr-1"></i>Suite Presidencial
+                        </span>
+                        <span class="liquid-glass-dark text-white text-xs px-3 py-1 rounded-full">
+                            <i class="fa-regular fa-wifi mr-1"></i>WiFi 6G
+                        </span>
                     </div>
-                    <div class="flex items-center gap-4 text-white">
-                        <div class="w-12 h-12 dark-glass rounded-2xl flex items-center justify-center text-apple-blue">
-                            <i class="fab fa-instagram"></i>
+                    
+                    <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                        <span class="text-white/70 text-xs font-bold uppercase tracking-widest">Desde $3,499 MXN/noche</span>
+                        <h3 class="text-4xl font-bold mt-2 mb-3">Confort Imperial</h3>
+                        
+                        <!-- Amenidades -->
+                        <div class="flex gap-4 mb-6 text-sm text-white/80">
+                            <span><i class="fa-regular fa-person-swimming mr-1"></i> 45m²</span>
+                            <span><i class="fa-regular fa-bed mr-1"></i> King Size</span>
+                            <span><i class="fa-regular fa-hot-tub mr-1"></i> Jacuzzi</span>
                         </div>
-                        <a href="https://www.instagram.com/lacasadelgeneralhotel/" target="_blank" class="font-medium hover:text-apple-blue transition-colors">@lacasadelgeneralhotel</a>
+                        
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/30 transition">
+                            Ver Habitación <i class="fa-regular fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="h-[500px] rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3550.463327668584!2d-105.6664!3d26.9298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU1JzQ3LjMiTiAxMDXCsDM5JzU5LjAiVw!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" 
-                    width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.9);" allowfullscreen="" loading="lazy">
-                </iframe>
-                <div class="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/20 rounded-[40px]"></div>
+            <!-- Habitación 2 -->
+            <div class="ios-card group">
+                <div class="relative h-[500px] overflow-hidden">
+                    <img src="IMG/HABITACIONES/3.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Master Suite">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="liquid-glass-dark text-white text-xs px-3 py-1 rounded-full">
+                            <i class="fa-regular fa-mountain mr-1"></i>Vista Panorámica
+                        </span>
+                        <span class="liquid-glass-dark text-white text-xs px-3 py-1 rounded-full">
+                            <i class="fa-regular fa-spa mr-1"></i>Spa Incluido
+                        </span>
+                    </div>
+                    
+                    <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                        <span class="text-white/70 text-xs font-bold uppercase tracking-widest">Desde $2,899 MXN/noche</span>
+                        <h3 class="text-4xl font-bold mt-2 mb-3">Esencia 1910</h3>
+                        
+                        <div class="flex gap-4 mb-6 text-sm text-white/80">
+                            <span><i class="fa-regular fa-person-swimming mr-1"></i> 38m²</span>
+                            <span><i class="fa-regular fa-bed mr-1"></i> Queen Size</span>
+                            <span><i class="fa-regular fa-tree mr-1"></i> Balcón</span>
+                        </div>
+                        
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/30 transition">
+                            Ver Habitación <i class="fa-regular fa-arrow-right"></i>
+            </a>
+        </div>
+                </div>
             </div>
+        </div>
+        
+        <!-- Ver Todas Button -->
+        <div class="text-center mt-12">
+            <a href="#" class="inline-flex items-center gap-2 text-apple-blue font-semibold hover:gap-4 transition-all">
+                Explorar todas las habitaciones <i class="fa-regular fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
-    <footer class="bg-white py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-2">
-                <span class="font-bold text-sm tracking-tighter uppercase">La Casa del General</span>
+    <!-- Experiencias Section Nueva -->
+    <section id="experiencias" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-apple-blue text-sm font-bold tracking-widest uppercase bg-apple-blue/10 px-4 py-2 rounded-full inline-block mb-4">
+                    <i class="fa-regular fa-star mr-2"></i>Experiencias Únicas
+                </span>
+                <h2 class="text-5xl font-bold tracking-tight mb-4">Vive la Historia</h2>
+                <p class="text-xl text-apple-gray max-w-2xl mx-auto">Descubre experiencias exclusivas que te conectarán con la rica historia de Parral.</p>
             </div>
             
-            <div class="flex gap-6">
-                <a href="https://www.instagram.com/lacasadelgeneralhotel/" target="_blank" class="w-10 h-10 bg-apple-bg rounded-full flex items-center justify-center text-navy-900 hover:bg-navy-900 hover:text-white transition-all">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="w-10 h-10 bg-apple-bg rounded-full flex items-center justify-center text-navy-900 hover:bg-navy-900 hover:text-white transition-all">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="w-10 h-10 bg-apple-bg rounded-full flex items-center justify-center text-navy-900 hover:bg-navy-900 hover:text-white transition-all">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Experiencia 1 -->
+                <div class="ios-card p-6">
+                    <div class="w-14 h-14 rounded-full bg-apple-blue/10 flex items-center justify-center mb-6">
+                        <i class="fa-regular fa-hat-cowboy text-2xl text-apple-blue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ruta de Pancho Villa</h3>
+                    <p class="text-apple-gray text-sm leading-relaxed mb-4">Recorre los lugares históricos más importantes de la mano de guías expertos.</p>
+                    <a href="#" class="text-apple-blue text-sm font-semibold flex items-center gap-2">
+                        Más información <i class="fa-regular fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Experiencia 2 -->
+                <div class="ios-card p-6">
+                    <div class="w-14 h-14 rounded-full bg-apple-blue/10 flex items-center justify-center mb-6">
+                        <i class="fa-regular fa-wine-glass text-2xl text-apple-blue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Cata de Vinos</h3>
+                    <p class="text-apple-gray text-sm leading-relaxed mb-4">Degustación de los mejores vinos de la región en nuestra terraza con vista panorámica.</p>
+                    <a href="#" class="text-apple-blue text-sm font-semibold flex items-center gap-2">
+                        Más información <i class="fa-regular fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Experiencia 3 -->
+                <div class="ios-card p-6">
+                    <div class="w-14 h-14 rounded-full bg-apple-blue/10 flex items-center justify-center mb-6">
+                        <i class="fa-regular fa-fire text-2xl text-apple-blue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Cena Revolucionaria</h3>
+                    <p class="text-apple-gray text-sm leading-relaxed mb-4">Una experiencia gastronómica única con platillos de la época revolucionaria.</p>
+                    <a href="#" class="text-apple-blue text-sm font-semibold flex items-center gap-2">
+                        Más información <i class="fa-regular fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <p class="text-[10px] font-bold text-apple-gray uppercase tracking-widest">© 2026 Parral, Chih. México.</p>
+    <!-- Footer mejorado con liquid glass -->
+    <footer class="relative py-20 px-6 overflow-hidden">
+        <!-- Background with liquid glass effect -->
+        <div class="absolute inset-0 bg-gradient-to-b from-apple-lightgray to-white"></div>
+        <div class="absolute inset-0 liquid-glass"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div class="max-w-xs">
+                    <h4 class="font-bold text-2xl mb-4 bg-gradient-to-r from-apple-darkgray to-apple-gray bg-clip-text text-transparent">La Casa del General</h4>
+                    <p class="text-apple-gray text-sm leading-relaxed mb-6">
+                        Inspirado en la historia de México, diseñado para el mundo moderno. Tu refugio de lujo en Hidalgo del Parral.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition shadow-sm">
+                            <i class="fa-brands fa-facebook-f text-apple-blue"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition shadow-sm">
+                            <i class="fa-brands fa-instagram text-apple-blue"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition shadow-sm">
+                            <i class="fa-brands fa-x-twitter text-apple-blue"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-apple-blue uppercase tracking-wider">Explorar</span>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Inicio</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Habitaciones</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Experiencias</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Galería</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-apple-blue uppercase tracking-wider">Asistencia</span>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Contacto</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Reservar</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Localización</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">FAQs</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-apple-blue uppercase tracking-wider">Legal</span>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Privacidad</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Términos</a>
+                        <a href="#" class="text-sm hover:text-apple-blue transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] text-apple-gray font-medium">
+                <p>Copyright © 2026 La Casa del General Hotel. Todos los derechos reservados.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-apple-blue transition-colors">Política de Privacidad</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Términos de Uso</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <style>
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 10s ease-in-out infinite;
+        }
+    </style>
 
 </body>
 </html>
